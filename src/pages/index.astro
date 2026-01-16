@@ -1,19 +1,42 @@
 ---
 import Layout from '../layouts/Layout.astro';
-import '../styles/cardAnimada.css';
+import '../styles/fondoAnimado.css';
 
 // Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
 // Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
 ---
 
 <Layout>
-	<article class="card">
-		<div class="wrapper">
-			<img src="/logo.png" alt="Astro logo" class="cover-image" />
-		</div>
+	<main>
+		<section class="relative min-h-screen overflow-hidden bg-black text-white">
+			<!-- Grid background -->
+			<div class="grid-bg absolute inset-0"></div>
 
-		<img src="/logo.png" alt="Astro logo" class="logo" />
+			<!-- Animated flow -->
+			<div class="flow-bg absolute inset-0"></div>
 
-		<img src="/logo.png" alt="Astro logo" class="character" />
-	</article>
+			<!-- Dark overlay -->
+			<div class="absolute inset-0 bg-black/60"></div>
+
+			<!-- Content -->
+			<div class="relative z-10 flex min-h-screen items-center justify-center px-6">
+				<div class="max-w-4xl text-center">
+					<span class="mb-6 inline-block rounded-full border border-sky-400/30 bg-sky-400/10 px-4 py-1 text-sm text-sky-300">
+						Network • HTTP • Status Codes
+					</span>
+
+					<h1 class="text-4xl font-bold tracking-tight md:text-6xl">The Web Speaks in Status Codes</h1>
+
+					<p class="mt-6 text-lg text-gray-300">Cada respuesta HTTP es una señal. Este flujo mantiene viva la comunicación en la web.</p>
+
+					<div class="mt-10 flex flex-wrap justify-center gap-4">
+						<span class="pill">200 OK</span>
+						<span class="pill">302 Found</span>
+						<span class="pill">404 Not Found</span>
+						<span class="pill">503 Service Unavailable</span>
+					</div>
+				</div>
+			</div>
+		</section>
+	</main>
 </Layout>
