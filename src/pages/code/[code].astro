@@ -1,12 +1,13 @@
 ---
-import Fondo from '../components/Fondo.astro';
-import Layout from '../layouts/Layout.astro';
+import Fondo from '../../components/Fondo.astro';
+import Layout from '../../layouts/Layout.astro';
 
 export function getStaticPaths() {
 	return [
 		{ params: { code: '1' }, props: { author: 'Blu' } },
 		{ params: { code: '2' }, props: { author: 'Erika' } },
-		{ params: { code: '3' }, props: { author: 'Matthew' } }
+		{ params: { code: '3' }, props: { author: 'Matthew' } },
+		{ params: { code: '100' }, props: { author: 'Erika' } }
 	];
 }
 
