@@ -3,20 +3,20 @@ interface Props {
 	text: string;
 	align?: 'left' | 'center' | 'right';
 	color?: string;
+	size?: string;
 }
 
-const { text, align = 'center', color } = Astro.props;
+const { text, align = 'center', color, size } = Astro.props;
 ---
 
-<h2 class={`section-title ${color} ${align === 'left' ? 'text-left' : align === 'right' ? 'text-right' : 'text-center'}`}>
+<h2 class={`section-title ${color} ${size} ${align === 'left' ? 'text-left' : align === 'right' ? 'text-right' : 'text-center'}`}>
 	{text}
 </h2>
 
 <style>
 	.section-title {
-		font-size: clamp(2.5rem, 5vw, 4rem);
 		font-weight: 800;
-		letter-spacing: -0.02em;
+		letter-spacing: 0.5px;
 		text-shadow:
 			0 20px 40px rgba(14, 164, 233, 0.6),
 			10px 30px 40px rgba(14, 164, 233, 0.5),
