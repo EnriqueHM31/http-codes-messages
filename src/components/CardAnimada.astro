@@ -11,17 +11,19 @@ interface CardAnimadaProps {
 }
 
 const dataCard = Astro.props as CardAnimadaProps; // type
-const { title, image_cover, image_logo, image_character } = dataCard;
+const { title, image_cover, image_logo, image_character, link } = dataCard;
 
 console.log({ data: image_cover });
 ---
 
-<article class="card">
-	<div class="wrapper">
-		<img src={image_cover} alt={title} class="cover-image" />
-	</div>
+<a href={link}>
+	<article class="card">
+		<div class="wrapper">
+			<img src={image_cover} alt={title} class="cover-image" />
+		</div>
 
-	<img src={image_logo} alt={title} class="logo" />
+		<img src={image_logo} alt={title} class="logo" />
 
-	<img src={image_character} alt={title} class="character" />
-</article>
+		<img src={image_character} alt={title} class="character" />
+	</article>
+</a>
