@@ -1,3 +1,28 @@
+
+export interface HttpExample {
+    scenario: string;
+    request: string;
+    response: string;
+    explanation: string;
+}
+
+export interface ImageData {
+    imageCover: string;
+    alt: string;
+}
+
+export interface CharacterImageData {
+    imageCharacter: string;
+    alt: string;
+}
+
+export interface HttpImage {
+    imageCover?: string;
+    imageCharacter?: string;
+    alt: string;
+}
+
+
 export interface HttpCode {
     code: number;
     status: string;
@@ -14,11 +39,6 @@ export interface HttpCode {
     headerFormat?: string;
     relatedHeaders?: string[];
     deltaFormats?: Record<string, string>;
-}
 
-export interface HttpExample {
-    scenario: string;
-    request: string;
-    response: string;
-    explanation: string;
+    images?: HttpImage[];
 }
