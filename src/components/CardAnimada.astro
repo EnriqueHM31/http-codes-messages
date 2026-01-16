@@ -1,0 +1,24 @@
+---
+import '../styles/cardAnimada.css';
+
+interface CardAnimadaProps {
+	title: string;
+	description: string;
+	image_cover: string;
+	image_logo: string;
+	image_character: string;
+	link: string;
+}
+
+const dataCard = Astro.props as CardAnimadaProps;
+---
+
+<article class="card">
+	<div class="wrapper">
+		<img src={dataCard.image_cover} alt={dataCard.title} class="cover-image" />
+	</div>
+
+	<img src={dataCard.image_logo} alt={dataCard.title} class="logo" />
+
+	<img src={dataCard.image_character} alt={dataCard.title} class="character" />
+</article>
