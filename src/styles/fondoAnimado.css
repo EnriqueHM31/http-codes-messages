@@ -20,7 +20,7 @@
 
 /* FLOW LIGHTS */
 .flow-bg {
-    background: linear-gradient(120deg, transparent 30%, #38bff8b0, #0ea4e9b9, transparent 70%);
+    background: linear-gradient(120deg, transparent 30%, #38f8d8b0, #0ee9e9b9, transparent 70%);
     background-size: 200% 200%;
     filter: blur(80px);
     animation: flowMove 12s ease-in-out infinite alternate;
