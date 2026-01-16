@@ -1,0 +1,57 @@
+---
+const githubUrl = 'https://github.com/EnriqueHM31?tab=repositories'; // cambia si es necesario
+---
+
+<header class="fixed top-0 z-50 w-full border-b border-white/5 backdrop-blur-md">
+	<nav class="mx-auto flex max-w-7xl items-center justify-between px-6 py-4">
+		<!-- Left: Logo + Title -->
+		<a href="/" class="flex items-center gap-3">
+			<!-- Logo -->
+			<div class="flex h-9 w-9 items-center justify-center rounded-lg border border-sky-400/30 bg-sky-500/10">
+				<span class="text-sm font-bold text-sky-400">
+					<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+						><g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
+							><path d="M10.143 8.857L7 12l3.143 3.143m3.714-6.286L17 12l-3.143 3.143"></path><rect
+								width="16.5"
+								height="16.5"
+								x="3.75"
+								y="3.75"
+								rx="4"></rect></g
+						></svg
+					>
+				</span>
+			</div>
+
+			<!-- Title -->
+			<span class="text-lg font-semibold tracking-wide text-white">
+				HTTP CODE <span class="font-semibold text-sky-400">HM</span>
+			</span>
+		</a>
+
+		<!-- Right: Author + GitHub -->
+		<a
+			href={githubUrl}
+			target="_blank"
+			rel="noopener noreferrer"
+			aria-label="GitHub"
+			class="group flex items-center justify-center rounded-lg border border-white/10 bg-white/5 px-4 transition-all hover:border-sky-400/40 hover:bg-sky-400/25"
+		>
+			<div class="flex items-center gap-3 text-sm text-gray-300">
+				<span class="hidden sm:inline">
+					Creado por <span class="font-medium text-white">Enrique HM</span>
+				</span>
+
+				<div class="flex items-center justify-center p-2">
+					<!-- GitHub Icon (SVG) -->
+					<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="size-8"
+						><g fill="#fff" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
+							><path
+								d="M9.096 21.25v-3.146a3.33 3.33 0 0 1 .758-2.115c-3.005-.4-5.28-1.859-5.28-5.798c0-1.666 1.432-3.89 1.432-3.89c-.514-1.13-.5-3.084.06-3.551c0 0 1.95.175 3.847 1.75c1.838-.495 3.764-.554 5.661 0c1.897-1.575 3.848-1.75 3.848-1.75c.558.467.573 2.422.06 3.551c0 0 1.432 2.224 1.432 3.89c0 3.94-2.276 5.398-5.28 5.798a3.33 3.33 0 0 1 .757 2.115v3.146"
+							></path><path d="M3.086 16.57c.163.554.463 1.066.878 1.496c.414.431.932.77 1.513.988a4.46 4.46 0 0 0 3.62-.216"></path></g
+						></svg
+					>
+				</div>
+			</div>
+		</a>
+	</nav>
+</header>
