@@ -2,15 +2,15 @@
 import '../styles/fondoAnimado.css';
 ---
 
-<main class="relative min-h-screen overflow-hidden bg-black text-white">
+<main class="relative -z-20 min-h-screen overflow-hidden bg-black text-white">
 	<!-- Grid background -->
-	<div class="grid-bg absolute inset-0"></div>
+	<div class="grid-bg absolute inset-0 -z-20"></div>
 
 	<!-- Animated flow -->
-	<div class="flow-bg absolute inset-0"></div>
+	<div class="flow-bg absolute inset-0 -z-20"></div>
 
 	<!-- Dark overlay -->
-	<div class="absolute inset-0 bg-black/60"></div>
+	<div class="absolute inset-0 -z-20 bg-black/60"></div>
 
 	<slot />
 </main>
