@@ -33,7 +33,7 @@
 }
 
 .card:hover .wrapper {
-    transform: perspective(1500px) translateY(-10%) rotate(30deg) translateZ(200px);
+    transform: perspective(1500px) translateY(-10%) rotate(30deg) translateZ(-50px);
     box-shadow: 2px 35px 32px -px rgba(0, 0, 0, 0.75);
     -webkit-box-shadow: 2px 35px 32px -8px rgba(0, 0, 0, 0.75);
     -moz-box-shadow: 2px 35px 32px -8px rgba(0, 0, 0, 0.75);
@@ -80,9 +80,7 @@
     transition: all 0.5s;
     position: absolute;
     bottom: 10px;
-    margin-left: 35px;
     scale: .9;
-    filter: drop-shadow(15px 20px 10px rgb(0, 0, 0)) drop-shadow(2px 15px 10px rgb(0, 0, 0)) drop-shadow(2px 1px 1px rgb(99, 247, 227));
 }
 
 
@@ -102,11 +100,12 @@
     filter: drop-shadow(2px 2px 2px rgba(0, 0, 0));
     position: absolute;
     z-index: -1;
-    margin-right: 35px;
-    filter: drop-shadow(15px 10px 10px rgb(0, 0, 0)) drop-shadow(2px 15px 10px rgb(0, 0, 0)) drop-shadow(2px 5px 10px rgb(99, 247, 227));
+    scale: 1;
+    margin-right: 60px;
 }
 
 .card:hover .character {
     opacity: 1;
-    transform: translate3d(5%, -30%, 670px);
+    scale: 1.6;
+    transform: translate3d(5%, -15%, 670px);
 }
