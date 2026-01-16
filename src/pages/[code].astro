@@ -1,0 +1,24 @@
+---
+import Fondo from '../components/Fondo.astro';
+import Layout from '../layouts/Layout.astro';
+
+export function getStaticPaths() {
+	return [
+		{ params: { code: '1' }, props: { author: 'Blu' } },
+		{ params: { code: '2' }, props: { author: 'Erika' } },
+		{ params: { code: '3' }, props: { author: 'Matthew' } }
+	];
+}
+
+const { code } = Astro.params;
+const { author } = Astro.props;
+---
+
+<Layout>
+	<Fondo>
+		<section class="flex min-h-screen flex-col items-center justify-center">
+			<h1>Hello {author}!</h1>
+			<h1>Hello {author}!</h1>
+		</section>
+	</Fondo>
+</Layout>
