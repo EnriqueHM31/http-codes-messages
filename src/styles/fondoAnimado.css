@@ -5,6 +5,7 @@
     background-size: 60px 60px;
     animation: gridMove 40s linear infinite;
     opacity: 0.35;
+    z-index: -1;
 }
 
 @keyframes gridMove {
@@ -19,7 +20,7 @@
 
 /* FLOW LIGHTS */
 .flow-bg {
-    background: linear-gradient(120deg, transparent 30%, rgba(56, 191, 248, 0.692), rgba(14, 164, 233, 0.726), transparent 70%);
+    background: linear-gradient(120deg, transparent 30%, #38bff8b0, #0ea4e9b9, transparent 70%);
     background-size: 200% 200%;
     filter: blur(80px);
     animation: flowMove 12s ease-in-out infinite alternate;
