@@ -4,26 +4,29 @@ import '../styles/cardAnimada.css';
 interface CardAnimadaProps {
 	title: string;
 	description: string;
-	image_cover: string;
+	image_cover: { imageCover: string; alt: string };
 	image_logo: string;
-	image_character: string;
+	image_character: { imageCharacter: string; alt: string };
 	link: string;
 }
 
 const dataCard = Astro.props as CardAnimadaProps; // type
 const { title, image_cover, image_logo, image_character, link } = dataCard;
 
-console.log({ data: image_cover });
+const src_cover = image_cover.imageCover;
+const alt_cover = image_cover.alt;
+const src_character = image_character.imageCharacter;
+const alt_character = image_character.alt;
 ---
 
 <a href={link}>
 	<article class="card">
 		<div class="wrapper">
-			<img src={image_cover} alt={title} class="cover-image" />
+			<img src={src_cover} alt={alt_cover} class="cover-image" />
 		</div>
 
-		<img src={image_logo} alt={title} class="logo" />
+		<img src={image_logo} alt={"Imagen que dice la palabra 'Code'"} class="logo" />
 
-		<img src={image_character} alt={title} class="character" />
+		<img src={src_character} alt={alt_character} class="character" />
 	</article>
 </a>
