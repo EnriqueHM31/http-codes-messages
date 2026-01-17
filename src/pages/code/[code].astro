@@ -1,8 +1,11 @@
 ---
 import Fondo from '../../components/Fondo.astro';
 import Layout from '../../layouts/Layout.astro';
-
 import { HTTP_STATUS_CODES } from '../../data/code';
+import { getHttpCode } from '../../services/httpCodes';
+import InfoCard from '../../components/InfoCard.astro';
+import CodeBlocks from '../../components/CodeBlocks.astro';
+import type { HttpExample } from '../../types';
 
 export function getStaticPaths() {
 	const paths = HTTP_STATUS_CODES.map(status => ({
@@ -14,12 +17,95 @@ export function getStaticPaths() {
 }
 
 const { code } = Astro.params;
+
+const data = await getHttpCode(code);
 ---
 
 <Layout title={`Código ${code}`} descripcion={`Pagina para mostrar el código ${code}`}>
 	<Fondo>
-		<section class="flex min-h-screen flex-col items-center justify-center">
-			<h1>Hello {code}!</h1>
+		<!-- HERO -->
+		<section class="relative overflow-hidden">
+			{
+				data.images?.[0]?.imageCover && (
+					<img src={data.images[0].imageCover} alt={data.images[0].alt} class="absolute inset-0 h-full w-full object-cover opacity-20" />
+				)
+			}
+
+			<div class="relative mx-auto grid max-w-6xl items-center gap-10 px-6 py-24 md:grid-cols-2">
+				<div>
+					<span class="mb-4 inline-block rounded-full bg-blue-600/20 px-4 py-1 text-sm font-semibold text-blue-400">
+						HTTP {data.httpVersion}
+					</span>
+
+					<h1 class="text-6xl font-extrabold tracking-tight md:text-7xl">
+						{data.code}
+					</h1>
+					<p class="mt-2 text-2xl font-semibold text-blue-400">
+						{data.status}
+					</p>
+
+					<p class="mt-6 max-w-xl leading-relaxed text-slate-300">
+						{data.description}
+					</p>
+				</div>
+
+				{
+					data.images?.[0]?.imageCharacter && (
+						<div class="flex justify-center">
+							<img src={data.images[0].imageCharacter} alt={data.images[0].alt} class="max-h-80 drop-shadow-2xl" />
+						</div>
+					)
+				}
+			</div>
 		</section>
+
+		<!-- CONTENT -->
+		<main class="mx-auto max-w-6xl space-y-20 px-6 py-16">
+			<!-- META -->
+			<section class="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4">
+				<InfoCard title="Category" value={data.category} />
+				<InfoCard title="HTTP Version" value={data.httpVersion} />
+				<InfoCard title="Specification" value={data.specification} />
+				{data.relatedCodes && <InfoCard title="Related Codes" value={data.relatedCodes.join(', ')} />}
+			</section>
+
+			<!-- USE CASES -->
+			<section>
+				<h2 class="mb-6 text-3xl font-bold">Use cases</h2>
+				<ul class="grid gap-4 sm:grid-cols-2">
+					{data.useCases.map((useCase: string[]) => <li class="rounded-xl border border-slate-700 bg-slate-800/60 p-5">{useCase}</li>)}
+				</ul>
+			</section>
+
+			<!-- EXAMPLES -->
+			<section>
+				<h2 class="mb-6 text-3xl font-bold">Examples</h2>
+				<div class="space-y-12">
+					{
+						data.examples.map((example: HttpExample) => (
+							<div class="overflow-hidden rounded-2xl border border-slate-700 bg-slate-900/70">
+								<div class="p-6">
+									<h3 class="mb-2 text-xl font-semibold">{example.scenario}</h3>
+									<p class="text-slate-400">{example.explanation}</p>
+								</div>
+
+								<CodeBlocks title="Request" content={example.request} />
+								<CodeBlocks title="Response" content={example.response} />
+							</div>
+						))
+					}
+				</div>
+			</section>
+
+			<!-- TECHNICAL NOTES -->
+			{
+				data.technicalNotes && (
+					<section>
+						<h2 class="mb-4 text-3xl font-bold">Technical notes</h2>
+						<div class="rounded-xl border border-slate-700 bg-slate-800/60 p-6 text-slate-300">{data.technicalNotes}</div>
+					</section>
+				)
+			}
+		</main>
 	</Fondo>
 </Layout>
