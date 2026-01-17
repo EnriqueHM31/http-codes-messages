@@ -101,11 +101,11 @@
     position: absolute;
     z-index: -1;
     scale: 1;
-    margin-right: 60px;
+    margin-right: 45px;
 }
 
 .card:hover .character {
     opacity: 1;
-    scale: 1.6;
-    transform: translate3d(5%, -15%, 670px);
+    scale: 1.1;
+    transform: translate3d(5%, -35%, 670px);
 }
