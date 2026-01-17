@@ -2,16 +2,19 @@
 import Fondo from '../components/Fondo.astro';
 import NavBar from '../components/NavBar.astro';
 import '../styles/global.css';
+
+const { title, descripcion } = Astro.props;
 ---
 
 <!doctype html>
 <html lang="es">
 	<head>
+		<title>{title}</title>
 		<meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width" />
 		<link rel="icon" type="image/svg+xml" href="/favicon.png" />
 		<meta name="generator" content={Astro.generator} />
-		<title>HTTP Codes HM</title>
+		<meta name="description" content={descripcion} />
 	</head>
 	<body>
 		<NavBar />
