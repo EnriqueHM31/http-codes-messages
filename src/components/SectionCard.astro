@@ -10,5 +10,7 @@ const { title } = Astro.props as SectionCardProps;
 
 <section class="flex flex-col gap-4">
 	<TitleSection text={title} align="left" color="white" size="text-4xl" />
-	<slot />
+	<div class="mt-4">
+		<slot />
+	</div>
 </section>
