@@ -2,24 +2,24 @@
 import Fondo from '../../components/Fondo.astro';
 import Layout from '../../layouts/Layout.astro';
 
+import { HTTP_STATUS_CODES } from '../../data/code';
+
 export function getStaticPaths() {
-	return [
-		{ params: { code: '1' }, props: { author: 'Blu' } },
-		{ params: { code: '2' }, props: { author: 'Erika' } },
-		{ params: { code: '3' }, props: { author: 'Matthew' } },
-		{ params: { code: '100' }, props: { author: 'Erika' } }
-	];
+	const paths = HTTP_STATUS_CODES.map(status => ({
+		params: { code: status.code.toString() }
+		// Opcionalmente, puedes agregar props adicionales
+	}));
+
+	return paths;
 }
 
 const { code } = Astro.params;
-const { author } = Astro.props;
 ---
 
-<Layout>
+<Layout title={`Código ${code}`} descripcion={`Pagina para mostrar el código ${code}`}>
 	<Fondo>
 		<section class="flex min-h-screen flex-col items-center justify-center">
-			<h1>Hello {author}!</h1>
-			<h1>Hello {author}!</h1>
+			<h1>Hello {code}!</h1>
 		</section>
 	</Fondo>
 </Layout>
