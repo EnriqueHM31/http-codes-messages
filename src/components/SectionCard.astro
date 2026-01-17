@@ -1,0 +1,14 @@
+---
+import TitleSection from './TitleSection.astro';
+
+interface SectionCardProps {
+	title: string;
+}
+
+const { title } = Astro.props as SectionCardProps;
+---
+
+<section class="flex flex-col gap-4">
+	<TitleSection text={title} align="left" color="white" size="text-4xl" />
+	<slot />
+</section>
