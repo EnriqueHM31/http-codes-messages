@@ -31,6 +31,7 @@ const data = (await getHttpCodes()) as HttpCode[];
 								alt: code.status
 							}}
 							link={`code/${code.code}`}
+							code={code.code}
 						/>
 					);
 				})
