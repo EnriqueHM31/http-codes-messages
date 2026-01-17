@@ -22,54 +22,20 @@ const data = (await getHttpCodes()) as HttpCode[];
 						<CardAnimada
 							title={code.status}
 							description={code.description}
-							image_cover={code.images?.[0]?.imageCover}
+							image_cover={{
+								imageCover: code.images?.[0]?.imageCover,
+								alt: code.status
+							}}
 							image_logo={'https://res.cloudinary.com/dovznesem/image/upload/v1768586804/404__2_-removebg-preview_cgkkr5.png'}
-							image_character={code.images?.[1]?.imageCharacter}
+							image_character={{
+								imageCharacter: code.images?.[1]?.imageCharacter,
+								alt: code.status
+							}}
 							link={`code/${code.code}`}
 						/>
 					);
 				})
 			}
-			<CardAnimada
-				title="Animación de la Web"
-				description="La Web se comunica mediante códigos de estado"
-				image_cover={'https://userway.org/blog/wp-content/uploads/2024/03/The-404-Page_-How-To-Turn-a-404-Error-Into-a-Win-for-Your-Website.jpg'}
-				image_logo={'https://res.cloudinary.com/dovznesem/image/upload/v1768586804/404__2_-removebg-preview_cgkkr5.png'}
-				image_character={'https://res.cloudinary.com/dovznesem/image/upload/v1768586275/404__1_-removebg-preview_lfdzsg.png'}
-				link="https://github.com/EnriqueHM31?tab=repositories"
-			/>
-			<CardAnimada
-				title="Animación de la Web"
-				description="La Web se comunica mediante códigos de estado"
-				image_cover={'https://userway.org/blog/wp-content/uploads/2024/03/The-404-Page_-How-To-Turn-a-404-Error-Into-a-Win-for-Your-Website.jpg'}
-				image_logo={'https://res.cloudinary.com/dovznesem/image/upload/v1768586804/404__2_-removebg-preview_cgkkr5.png'}
-				image_character={'https://res.cloudinary.com/dovznesem/image/upload/v1768586275/404__1_-removebg-preview_lfdzsg.png'}
-				link="https://github.com/EnriqueHM31?tab=repositories"
-			/>
-			<CardAnimada
-				title="Animación de la Web"
-				description="La Web se comunica mediante códigos de estado"
-				image_cover={'https://userway.org/blog/wp-content/uploads/2024/03/The-404-Page_-How-To-Turn-a-404-Error-Into-a-Win-for-Your-Website.jpg'}
-				image_logo={'https://res.cloudinary.com/dovznesem/image/upload/v1768586804/404__2_-removebg-preview_cgkkr5.png'}
-				image_character={'https://res.cloudinary.com/dovznesem/image/upload/v1768586275/404__1_-removebg-preview_lfdzsg.png'}
-				link="https://github.com/EnriqueHM31?tab=repositories"
-			/>
-			<CardAnimada
-				title="Animación de la Web"
-				description="La Web se comunica mediante códigos de estado"
-				image_cover={'https://userway.org/blog/wp-content/uploads/2024/03/The-404-Page_-How-To-Turn-a-404-Error-Into-a-Win-for-Your-Website.jpg'}
-				image_logo={'https://res.cloudinary.com/dovznesem/image/upload/v1768586804/404__2_-removebg-preview_cgkkr5.png'}
-				image_character={'https://res.cloudinary.com/dovznesem/image/upload/v1768586275/404__1_-removebg-preview_lfdzsg.png'}
-				link="https://github.com/EnriqueHM31?tab=repositories"
-			/>
-			<CardAnimada
-				title="Animación de la Web"
-				description="La Web se comunica mediante códigos de estado"
-				image_cover={'https://userway.org/blog/wp-content/uploads/2024/03/The-404-Page_-How-To-Turn-a-404-Error-Into-a-Win-for-Your-Website.jpg'}
-				image_logo={'https://res.cloudinary.com/dovznesem/image/upload/v1768586804/404__2_-removebg-preview_cgkkr5.png'}
-				image_character={'https://res.cloudinary.com/dovznesem/image/upload/v1768586275/404__1_-removebg-preview_lfdzsg.png'}
-				link="https://github.com/EnriqueHM31?tab=repositories"
-			/>
 		</div>
 	</section>
 </Layout>
