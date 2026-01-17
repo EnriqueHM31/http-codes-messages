@@ -5,7 +5,8 @@ import { HTTP_STATUS_CODES } from '../../data/code';
 import { getHttpCode } from '../../services/httpCodes';
 import InfoCard from '../../components/InfoCard.astro';
 import CodeBlocks from '../../components/CodeBlocks.astro';
-import type { HttpExample } from '../../types';
+import type { HttpCode, HttpExample } from '../../types';
+import SectionCard from '../../components/SectionCard.astro';
 
 export function getStaticPaths() {
 	const paths = HTTP_STATUS_CODES.map(status => ({
@@ -18,62 +19,72 @@ export function getStaticPaths() {
 
 const { code } = Astro.params;
 
-const data = await getHttpCode(code);
+const data = (await getHttpCode(code)) as HttpCode;
+
+console.log(data.images);
 ---
 
 <Layout title={`Código ${code}`} descripcion={`Pagina para mostrar el código ${code}`}>
 	<Fondo>
 		<!-- HERO -->
-		<section class="relative overflow-hidden">
+		<section class="relative w-full overflow-hidden">
 			{
 				data.images?.[0]?.imageCover && (
 					<img src={data.images[0].imageCover} alt={data.images[0].alt} class="absolute inset-0 h-full w-full object-cover opacity-20" />
 				)
 			}
 
-			<div class="relative mx-auto grid max-w-6xl items-center gap-10 px-6 py-24 md:grid-cols-2">
-				<div>
-					<span class="mb-4 inline-block rounded-full bg-blue-600/20 px-4 py-1 text-sm font-semibold text-blue-400">
+			<div class="relative mx-auto w-full max-w-6xl items-center gap-10 px-6 py-24">
+				<div class="flex min-h-[90dvh] flex-col items-center justify-center">
+					<span class="mb-4 inline-block rounded-full bg-blue-600/20 px-4 py-1 text-4xl font-semibold text-blue-400">
 						HTTP {data.httpVersion}
 					</span>
 
 					<h1 class="text-6xl font-extrabold tracking-tight md:text-7xl">
-						{data.code}
+						<img src={data.images?.[1]?.imageCharacter} alt={data.images?.[1]?.alt} class="scale-150" />
 					</h1>
-					<p class="mt-2 text-2xl font-semibold text-blue-400">
-						{data.status}
-					</p>
-
-					<p class="mt-6 max-w-xl leading-relaxed text-slate-300">
-						{data.description}
-					</p>
 				</div>
-
-				{
-					data.images?.[0]?.imageCharacter && (
-						<div class="flex justify-center">
-							<img src={data.images[0].imageCharacter} alt={data.images[0].alt} class="max-h-80 drop-shadow-2xl" />
-						</div>
-					)
-				}
 			</div>
 		</section>
-
 		<!-- CONTENT -->
 		<main class="mx-auto max-w-6xl space-y-20 px-6 py-16">
-			<!-- META -->
-			<section class="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4">
-				<InfoCard title="Category" value={data.category} />
-				<InfoCard title="HTTP Version" value={data.httpVersion} />
-				<InfoCard title="Specification" value={data.specification} />
-				{data.relatedCodes && <InfoCard title="Related Codes" value={data.relatedCodes.join(', ')} />}
+			<section class="rounded-xl border border-slate-700 bg-slate-800/60 p-5">
+				<h2 class="mb-4 text-3xl font-bold">Descripcion</h2>
+				{
+					data.description.split('. ').map((sentence, i) => (
+						<p class="mb-4 text-slate-300">
+							{sentence}.
+							<br />
+						</p>
+					))
+				}
 			</section>
+
+			<!-- META -->
+			<section class="flex flex-col gap-4">
+				<h2>Caracteristicas</h2>
+				<div class="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4">
+					<InfoCard title="Category" value={data.category} />
+					<InfoCard title="HTTP Version" value={data.httpVersion} />
+					<InfoCard title="Specification" value={data.specification} />
+					{data.relatedCodes && <InfoCard title="Related Codes" value={data.relatedCodes.join(', ')} />}
+				</div>
+			</section>
+
+			<SectionCard title="Casos de uso">
+				<div class="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4">
+					<InfoCard title="Category" value={data.category} />
+					<InfoCard title="HTTP Version" value={data.httpVersion} />
+					<InfoCard title="Specification" value={data.specification} />
+					{data.relatedCodes && <InfoCard title="Related Codes" value={data.relatedCodes.join(', ')} />}
+				</div>
+			</SectionCard>
 
 			<!-- USE CASES -->
 			<section>
 				<h2 class="mb-6 text-3xl font-bold">Use cases</h2>
 				<ul class="grid gap-4 sm:grid-cols-2">
-					{data.useCases.map((useCase: string[]) => <li class="rounded-xl border border-slate-700 bg-slate-800/60 p-5">{useCase}</li>)}
+					{data.useCases.map((useCase: string) => <li class="rounded-xl border border-slate-700 bg-slate-800/60 p-5">{useCase}</li>)}
 				</ul>
 			</section>
 
