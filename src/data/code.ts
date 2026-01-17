@@ -49,6 +49,8 @@ export const HTTP_STATUS_CODES = [
     { code: 416 },
     { code: 417 },
     { code: 418 },
+    { code: 419 },
+    { code: 420 },
     { code: 421 },
     { code: 422 },
     { code: 423 },
