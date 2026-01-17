@@ -7,3 +7,14 @@ export async function getHttpCodes() {
 
     return response.json();
 }
+
+
+export async function getHttpCode(code: string) {
+    const response = await fetch(`http://localhost:3000/http-codes/${code}`);
+
+    if (!response.ok) {
+        throw new Error("Error al obtener el código HTTP");
+    }
+
+    return response.json();
+}
