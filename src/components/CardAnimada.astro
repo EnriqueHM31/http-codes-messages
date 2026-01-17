@@ -2,7 +2,6 @@
 import '../styles/cardAnimada.css';
 
 interface CardAnimadaProps {
-	title: string;
 	description: string;
 	image_cover: { imageCover: string; alt: string };
 	image_logo: string;
@@ -11,7 +10,7 @@ interface CardAnimadaProps {
 }
 
 const dataCard = Astro.props as CardAnimadaProps; // type
-const { title, image_cover, image_logo, image_character, link } = dataCard;
+const { image_cover, image_logo, image_character, link } = dataCard;
 
 const src_cover = image_cover.imageCover;
 const alt_cover = image_cover.alt;

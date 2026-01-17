@@ -20,7 +20,6 @@ const data = (await getHttpCodes()) as HttpCode[];
 				data.map(code => {
 					return (
 						<CardAnimada
-							title={code.status}
 							description={code.description}
 							image_cover={{
 								imageCover: code.images?.[0]?.imageCover,
