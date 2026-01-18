@@ -1,12 +1,12 @@
 ---
-import Fondo from '../../components/Fondo.astro';
+import Fondo from '../../components/landing/Fondo.astro';
 import Layout from '../../layouts/Layout.astro';
 import { HTTP_STATUS_CODES } from '../../data/code';
 import { getHttpCode } from '../../services/httpCodes';
-import InfoCard from '../../components/InfoCard.astro';
-import CodeBlocks from '../../components/CodeBlocks.astro';
+import InfoCard from '../../components/codes-http/InfoCard.astro';
+import CodeBlocks from '../../components/Atomos/CodeBlocks.astro';
 import type { HttpCode, HttpExample } from '../../types';
-import SectionCard from '../../components/SectionCard.astro';
+import SectionCard from '../../components/Atomos/SectionCard.astro';
 
 export function getStaticPaths() {
 	const paths = HTTP_STATUS_CODES.map(status => ({
