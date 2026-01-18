@@ -59,34 +59,36 @@ const { data } = Astro.props as { data: HttpCode[] };
 	const cards = document.querySelectorAll('.http-card') as NodeListOf<HTMLDivElement>;
 	const noResults = document.getElementById('no-results') as HTMLParagraphElement;
 
-	if (!input) return;
-	input.addEventListener('input', e => {
-		e.preventDefault();
-		const value = input.value.toLowerCase();
-		let visible = 0;
+	if (input) {
+		input.addEventListener('input', e => {
+			e.preventDefault();
+			const value = input.value.toLowerCase();
+			console.log(value);
+			let visible = 0;
 
-		cards.forEach(card => {
-			const code = card.dataset.code;
-			const status = card.dataset.status;
+			cards.forEach(card => {
+				const code = card.dataset.code;
+				const status = card.dataset.status;
 
-			if (!value) {
-				card.classList.remove('hidden');
-				visible++;
-				return;
-			}
+				if (!value) {
+					card.classList.remove('hidden');
+					visible++;
+					return;
+				}
 
-			if (code?.includes(value) || status?.includes(value)) {
-				card.classList.remove('hidden');
-				visible++;
+				if (code?.includes(value) || status?.includes(value)) {
+					card.classList.remove('hidden');
+					visible++;
+				} else {
+					card.classList.add('hidden');
+				}
+			});
+
+			if (visible === 0) {
+				noResults.classList.remove('hidden');
 			} else {
-				card.classList.add('hidden');
+				noResults.classList.add('hidden');
 			}
 		});
-
-		if (visible === 0) {
-			noResults.classList.remove('hidden');
-		} else {
-			noResults.classList.add('hidden');
-		}
-	});
+	}
 </script>
