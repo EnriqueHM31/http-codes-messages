@@ -11,6 +11,8 @@ import type { HttpCode, HttpExample } from '../../types';
 import DescripcionCode from '../../components/sections/detailCode/DescripcionCode.astro';
 import MetaDataCode from '../../components/sections/detailCode/MetaDataCode.astro';
 import CasosUsosCode from '../../components/sections/detailCode/CasosUsosCode.astro';
+import ExamplesCode from '../../components/sections/detailCode/ExamplesCode.astro';
+import NotasTecnicas from '../../components/sections/detailCode/NotasTecnicas.astro';
 
 export function getStaticPaths() {
 	const paths = HTTP_STATUS_CODES.map(status => ({
@@ -48,32 +50,10 @@ const characterAlt = data.images?.[1]?.alt;
 			<CasosUsosCode useCases={data.useCases} />
 
 			<!-- EXAMPLES -->
-			<SectionCard title="Ejemplos">
-				<div class="space-y-12">
-					{
-						data.examples.map((example: HttpExample) => (
-							<div class="border-slate-70 rounded-xl border border-slate-700 bg-black/30 p-2">
-								<div class="p-6">
-									<h3 class="mb-2 text-xl font-semibold">{example.scenario}</h3>
-									<p class="text-slate-400">{example.explanation}</p>
-								</div>
-
-								<CodeBlocks title="Request" content={example.request} />
-								<CodeBlocks title="Response" content={example.response} />
-							</div>
-						))
-					}
-				</div>
-			</SectionCard>
+			<ExamplesCode examples={data.examples} />
 
 			<!-- TECHNICAL NOTES -->
-			{
-				data.technicalNotes && (
-					<SectionCard title="Notas técnicas">
-						<div class="rounded-xl border border-slate-700 bg-slate-800/60 p-6 text-slate-300">{data.technicalNotes}</div>
-					</SectionCard>
-				)
-			}
+			<NotasTecnicas technicalNotes={data.technicalNotes} />
 		</section>
 	</Fondo>
 </Layout>
