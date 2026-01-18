@@ -10,7 +10,7 @@ const { data } = Astro.props as { data: HttpCode[] };
 ---
 
 <section class="max-w-8xl relative mx-auto flex min-h-screen flex-col items-center justify-center">
-    <TitleSection text="Status Codes" align="center" size="text-6xl " />
+    <TitleSection text="Status Codes" align="center" size="text-6xl" delay="animate-delay-100" />
     <div class="flex flex-wrap justify-center gap-x-40">
         {
             data.map((code) => {
