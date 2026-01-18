@@ -1,18 +1,15 @@
 ---
-import CodeBlocks from '../../components/atomos/CodeBlocks.astro';
-import SectionCard from '../../components/atomos/SectionCard.astro';
-import InfoCard from '../../components/codes-http/InfoCard.astro';
 import Fondo from '../../components/landing/Fondo.astro';
+import CasosUsosCode from '../../components/sections/detailCode/CasosUsosCode.astro';
+import DescripcionCode from '../../components/sections/detailCode/DescripcionCode.astro';
+import ExamplesCode from '../../components/sections/detailCode/ExamplesCode.astro';
 import Header from '../../components/sections/detailCode/Header.astro';
+import MetaDataCode from '../../components/sections/detailCode/MetaDataCode.astro';
+import NotasTecnicas from '../../components/sections/detailCode/NotasTecnicas.astro';
 import { HTTP_STATUS_CODES } from '../../data/code';
 import Layout from '../../layouts/Layout.astro';
 import { getHttpCode } from '../../services/httpCodes';
-import type { HttpCode, HttpExample } from '../../types';
-import DescripcionCode from '../../components/sections/detailCode/DescripcionCode.astro';
-import MetaDataCode from '../../components/sections/detailCode/MetaDataCode.astro';
-import CasosUsosCode from '../../components/sections/detailCode/CasosUsosCode.astro';
-import ExamplesCode from '../../components/sections/detailCode/ExamplesCode.astro';
-import NotasTecnicas from '../../components/sections/detailCode/NotasTecnicas.astro';
+import type { HttpCode } from '../../types';
 
 export function getStaticPaths() {
 	const paths = HTTP_STATUS_CODES.map(status => ({
@@ -28,15 +25,13 @@ const data = (await getHttpCode(code)) as HttpCode;
 
 const coverImage = data.images?.[0]?.imageCover;
 const coverAlt = data.images?.[0]?.alt;
-const characterImage = data.images?.[1]?.imageCharacter;
-const characterAlt = data.images?.[1]?.alt;
 ---
 
 <Layout title={`Código ${code}`} descripcion={`Pagina para mostrar el código ${code}`}>
 	<Fondo>
 		<!-- HERO -->
 		<Header cover={coverImage} alt={coverAlt} code={code} />
-		
+
 		<!-- CONTENT -->
 		<section class="mx-auto max-w-7xl space-y-20 px-6 py-16">
 			<!-- DESCRIPTION -->
