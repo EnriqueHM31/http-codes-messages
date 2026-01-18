@@ -10,25 +10,25 @@ const { data } = Astro.props as { data: HttpCode[] };
 	<!-- HEADER -->
 	<header class="mb-30 w-full max-w-5xl px-6 pt-4 text-center">
 		<TitleSection text="HTTP Status Codes" align="center" size="text-6xl" delay="animate-delay-100" />
-		<p class="mx-auto mt-6 max-w-3xl text-lg text-slate-400">
+		<p class="animate-fade-in-up animate-delay-200 mx-auto mt-6 max-w-3xl text-lg text-slate-400">
 			Explora los códigos de estado HTTP y entiende cómo los servidores responden a las solicitudes web. Busca por número o nombre para encontrar
 			rápidamente el código que necesitas.
 		</p>
 
 		<!-- SEARCH -->
-		<form class="relative mx-auto mt-10 max-w-xl">
+		<form class="animate-fade-in-up animate-delay-300 relative mx-auto mt-10 max-w-xl">
 			<input
 				id="search-input"
 				type="search"
 				placeholder="Buscar por código (404) o nombre (Not Found)"
-				class="w-full rounded-xl border border-slate-700 bg-slate-800/80 px-5 py-3 pr-12 text-slate-100 placeholder-slate-400 focus:ring-2 focus:ring-blue-500 focus:outline-none"
+				class="w-full rounded-xl border border-slate-700 bg-black/30 px-5 py-3 pr-12 text-slate-100 placeholder-slate-400 focus:ring-2 focus:ring-cyan-300 focus:outline-none"
 			/>
 			<span class="absolute top-1/2 right-4 -translate-y-1/2 text-slate-400">🔍</span>
 		</form>
 	</header>
 
 	<!-- GRID -->
-	<div id="codes-grid" class="flex flex-wrap justify-center gap-x-20 gap-y-16 px-6">
+	<div id="codes-grid" class="mb-25 flex flex-wrap justify-center gap-x-20 gap-y-16 px-6">
 		{
 			data.map(code => (
 				<div class="http-card" data-code={code.code} data-status={code.status.toLowerCase()}>
@@ -51,7 +51,7 @@ const { data } = Astro.props as { data: HttpCode[] };
 		}
 	</div>
 
-	<p id="no-results" class="mt-20 hidden text-center text-lg text-slate-400">No se encontró ningún código que coincida con tu búsqueda.</p>
+	<p id="no-results" class="hidden text-center text-lg text-slate-400">No se encontró ningún código que coincida con tu búsqueda.</p>
 </section>
 
 <script>
