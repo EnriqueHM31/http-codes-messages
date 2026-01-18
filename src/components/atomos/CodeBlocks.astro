@@ -3,11 +3,11 @@ import type { CodeBlockProps } from '../../types/components';
 const { title, content } = Astro.props as CodeBlockProps;
 ---
 
-<div class="border-t border-slate-700">
+<div class="w-full overflow-x-auto border-t border-slate-700">
 	<div class="bg-cyan-800 px-6 py-2 text-sm font-semibold text-slate-300">
 		{title}
 	</div>
-	<pre class="overflow-x-auto bg-black px-6 py-4 text-sm text-emerald-400">
+	<pre class="scroll-estilado overflow-x-auto bg-black px-6 py-4 text-sm text-emerald-400">
     <code>{content}</code>
     </pre>
 </div>
