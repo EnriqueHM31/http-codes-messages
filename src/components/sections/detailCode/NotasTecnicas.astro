@@ -1,13 +1,14 @@
 ---
-import SectionCard from "../../atomos/SectionCard.astro";
+import SectionCard from '../../atomos/SectionCard.astro';
+import type { PropsTechnicalNotesCode } from '../../../types/components';
 
-const { technicalNotes } = Astro.props as { technicalNotes: string };
+const { technicalNotes } = Astro.props as PropsTechnicalNotesCode;
 ---
 
 {
-    technicalNotes && (
-        <SectionCard title="Notas técnicas">
-            <div class="rounded-xl border border-slate-700 bg-slate-800/60 p-6 text-slate-300">{technicalNotes}</div>
-        </SectionCard>
-    )
+	technicalNotes && (
+		<SectionCard title="Notas técnicas">
+			<div class="rounded-xl border border-slate-700 bg-slate-800/60 p-6 text-slate-300">{technicalNotes}</div>
+		</SectionCard>
+	)
 }

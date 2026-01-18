@@ -3,8 +3,9 @@ import { ClientRouter } from 'astro:transitions';
 import Fondo from '../components/landing/Fondo.astro';
 import NavBar from '../components/landing/NavBar.astro';
 import '../styles/global.css';
+import type { LayoutProps } from '../types/components';
 
-const { title, descripcion } = Astro.props;
+const { title, descripcion } = Astro.props as LayoutProps;
 ---
 
 <!doctype html>

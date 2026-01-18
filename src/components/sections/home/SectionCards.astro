@@ -2,12 +2,7 @@
 import { getImageResource } from '../../../adapters/ImageResoruce';
 import type { HttpCode, HttpImage } from '../../../types';
 import CardAnimada from '../../atomos/CardAnimada.astro';
-
-interface SectionCardsProps {
-	data: HttpCode[];
-	URL_LOGO: string;
-	PAGE_SIZE: number;
-}
+import type { SectionCardsProps } from '../../../types/components';
 
 const { data, URL_LOGO, PAGE_SIZE } = Astro.props as SectionCardsProps;
 ---

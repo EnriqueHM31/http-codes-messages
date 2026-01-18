@@ -4,8 +4,9 @@ import HeaderCodes from '../../codes-http/HeaderCodes.astro';
 import NoResultsCodes from '../../codes-http/NoResultsCodes.astro';
 import SectionCards from '../../sections/home/SectionCards.astro';
 import Sentinel from '../../sections/home/Sentinel.astro';
+import type { CodesHttpProps } from '../../../types/components';
 
-const { data } = Astro.props as { data: HttpCode[] };
+const { data } = Astro.props as CodesHttpProps;
 
 const PAGE_SIZE = 12;
 const URL_LOGO = 'https://res.cloudinary.com/dovznesem/image/upload/v1768586804/404__2_-removebg-preview_cgkkr5.png';
