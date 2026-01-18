@@ -23,12 +23,12 @@ const data = (await getHttpCodes()) as HttpCode[];
 							description={code.description}
 							image_cover={{
 								imageCover: code.images?.[0]?.imageCover,
-								alt: code.status
+								alt: code.images?.[0]?.alt
 							}}
 							image_logo={'https://res.cloudinary.com/dovznesem/image/upload/v1768586804/404__2_-removebg-preview_cgkkr5.png'}
 							image_character={{
 								imageCharacter: code.images?.[1]?.imageCharacter,
-								alt: code.status
+								alt: code.images?.[1]?.alt
 							}}
 							link={`code/${code.code}`}
 							code={code.code}
