@@ -1,4 +1,5 @@
 ---
+import { getImageResource } from '../../adapters/ImageResoruce';
 import Fondo from '../../components/landing/Fondo.astro';
 import CasosUsosCode from '../../components/sections/detailCode/CasosUsosCode.astro';
 import DescripcionCode from '../../components/sections/detailCode/DescripcionCode.astro';
@@ -9,7 +10,7 @@ import NotasTecnicas from '../../components/sections/detailCode/NotasTecnicas.as
 import { HTTP_STATUS_CODES } from '../../data/code';
 import Layout from '../../layouts/Layout.astro';
 import { getHttpCode } from '../../services/httpCodes';
-import type { HttpCode } from '../../types';
+import type { HttpCode, HttpImage } from '../../types';
 
 export function getStaticPaths() {
 	const paths = HTTP_STATUS_CODES.map(status => ({
@@ -23,14 +24,13 @@ const { code } = Astro.params;
 
 const data = (await getHttpCode(code)) as HttpCode;
 
-const coverImage = data.images?.[0]?.imageCover;
-const coverAlt = data.images?.[0]?.alt;
+const { coverImage, coverImageAlt } = getImageResource(data.images as HttpImage[]);
 ---
 
 <Layout title={`Código ${code}`} descripcion={`Pagina para mostrar el código ${code}`}>
 	<Fondo>
 		<!-- HERO -->
-		<Header cover={coverImage} alt={coverAlt} code={code} />
+		<Header cover={coverImage} alt={coverImageAlt} code={code} />
 
 		<!-- CONTENT -->
 		<section class="mx-auto max-w-7xl space-y-20 px-6 py-16">

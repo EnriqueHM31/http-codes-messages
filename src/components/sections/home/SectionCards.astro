@@ -1,5 +1,6 @@
 ---
-import type { HttpCode } from '../../../types';
+import { getImageResource } from '../../../adapters/ImageResoruce';
+import type { HttpCode, HttpImage } from '../../../types';
 import CardAnimada from '../../atomos/CardAnimada.astro';
 
 interface SectionCardsProps {
@@ -13,23 +14,27 @@ const { data, URL_LOGO, PAGE_SIZE } = Astro.props as SectionCardsProps;
 
 <div id="codes-grid" class="mb-25 flex flex-wrap justify-center gap-x-20 gap-y-16 px-6">
 	{
-		data.slice(0, PAGE_SIZE).map(code => (
-			<div class="http-card" data-code={code.code} data-status={code.status.toLowerCase()}>
-				<CardAnimada
-					description={code.description}
-					image_cover={{
-						imageCover: code.images?.[0]?.imageCover,
-						alt: code.images?.[0]?.alt
-					}}
-					image_logo={URL_LOGO}
-					image_character={{
-						imageCharacter: code.images?.[1]?.imageCharacter,
-						alt: code.images?.[1]?.alt
-					}}
-					link={`code/${code.code}`}
-					code={code.code}
-				/>
-			</div>
-		))
+		data.slice(0, PAGE_SIZE).map(code => {
+			const { coverImage, coverImageAlt, characterImage, characterImageAlt } = getImageResource(code.images as HttpImage[]);
+
+			return (
+				<div class="http-card" data-code={code.code} data-status={code.status.toLowerCase()}>
+					<CardAnimada
+						description={code.description}
+						image_cover={{
+							imageCover: coverImage,
+							alt: coverImageAlt
+						}}
+						image_logo={URL_LOGO}
+						image_character={{
+							imageCharacter: characterImage,
+							alt: characterImageAlt
+						}}
+						link={`code/${code.code}`}
+						code={code.code}
+					/>
+				</div>
+			);
+		})
 	}
 </div>
