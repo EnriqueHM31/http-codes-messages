@@ -30,7 +30,12 @@ console.log(data.images);
 		<section class="relative w-full overflow-hidden">
 			{
 				data.images?.[0]?.imageCover && (
-					<img src={data.images[0].imageCover} alt={data.images[0].alt} class="absolute inset-0 h-full w-full object-cover opacity-40" />
+					<img
+						src={data.images[0].imageCover}
+						alt={data.images[0].alt}
+						class="absolute inset-0 h-full w-full object-cover opacity-40"
+						transition:name={`${code}-cover`}
+					/>
 				)
 			}
 			<div class="absolute inset-0 z-10 h-full w-full bg-linear-to-t from-black to-transparent to-25% object-cover"></div>
