@@ -1,7 +1,6 @@
 ---
-import CardAnimada from '../components/Atomos/CardAnimada.astro';
+import CardsCodesHttp from '../components/sections/CardsCodesHttp.astro';
 import Hero from '../components/sections/Hero.astro';
-import TitleSection from '../components/Atomos/TitleSection.astro';
 import Layout from '../layouts/Layout.astro';
 import { getHttpCodes } from '../services/httpCodes';
 import '../styles/fondoAnimado.css';
@@ -12,30 +11,5 @@ const data = (await getHttpCodes()) as HttpCode[];
 
 <Layout title="HTTP Codes HM" descripcion="Pagina principal del proyecto HTTP Codes HM, en donde se muestran los códigos HTTP con sus nombres y codes">
 	<Hero />
-	<TitleSection text="Status Codes" align="center" size="text-6xl " />
-
-	<section class="max-w-8xl relative mx-auto flex min-h-screen flex-col items-center justify-center">
-		<div class="flex flex-wrap justify-center gap-x-40">
-			{
-				data.map(code => {
-					return (
-						<CardAnimada
-							description={code.description}
-							image_cover={{
-								imageCover: code.images?.[0]?.imageCover,
-								alt: code.images?.[0]?.alt
-							}}
-							image_logo={'https://res.cloudinary.com/dovznesem/image/upload/v1768586804/404__2_-removebg-preview_cgkkr5.png'}
-							image_character={{
-								imageCharacter: code.images?.[1]?.imageCharacter,
-								alt: code.images?.[1]?.alt
-							}}
-							link={`code/${code.code}`}
-							code={code.code}
-						/>
-					);
-				})
-			}
-		</div>
-	</section>
+	<CardsCodesHttp data={data} />
 </Layout>
