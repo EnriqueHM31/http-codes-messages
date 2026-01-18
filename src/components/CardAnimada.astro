@@ -23,9 +23,9 @@ const alt_character = image_character.alt;
 	<article class="card">
 		<div class="wrapper">
 			<div class="title z-10 bg-sky-700">
-				<h2 class="absolute top-4 right-8 text-2xl font-bold text-white">{code}</h2>
+				<h2 class="absolute top-4 right-8 z-30 text-2xl font-bold">{code}</h2>
 			</div>
-			<img src={src_cover} alt={alt_cover} class="cover-image" />
+			<img src={src_cover} alt={alt_cover} class="cover-image" transition:name={`${code}-cover`} />
 		</div>
 
 		<img src={image_logo} alt={"Imagen que dice la palabra 'Code'"} class="logo" />
