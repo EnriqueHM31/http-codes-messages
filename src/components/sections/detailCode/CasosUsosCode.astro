@@ -1,0 +1,11 @@
+---
+import SectionCard from "../../atomos/SectionCard.astro";
+
+const { useCases } = Astro.props as { useCases: string[] };
+---
+
+<SectionCard title="Casos de uso">
+    <ul class="grid gap-8 sm:grid-cols-3">
+        {useCases.map((useCase: string) => <li class="border-slate-70 rounded-xl border border-slate-700 bg-black/30 p-5">{useCase}</li>)}
+    </ul>
+</SectionCard>
