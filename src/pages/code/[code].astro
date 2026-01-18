@@ -11,7 +11,6 @@ import SectionCard from '../../components/SectionCard.astro';
 export function getStaticPaths() {
 	const paths = HTTP_STATUS_CODES.map(status => ({
 		params: { code: status.code.toString() }
-		// Opcionalmente, puedes agregar props adicionales
 	}));
 
 	return paths;
@@ -20,8 +19,6 @@ export function getStaticPaths() {
 const { code } = Astro.params;
 
 const data = (await getHttpCode(code)) as HttpCode;
-
-console.log(data.images);
 ---
 
 <Layout title={`Código ${code}`} descripcion={`Pagina para mostrar el código ${code}`}>
