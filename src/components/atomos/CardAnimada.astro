@@ -20,7 +20,7 @@ const alt_character = image_character.alt;
 ---
 
 <a href={link} class="timeline-view animate-zoom-in animate-range-cover animate-delay-0">
-	<article class="card ">
+	<article class="card">
 		<div class="wrapper">
 			<div class="title z-10 bg-sky-700">
 				<h2 class="absolute top-4 right-8 z-30 text-2xl font-bold">{code}</h2>
@@ -30,6 +30,8 @@ const alt_character = image_character.alt;
 
 		<img src={image_logo} alt={"Imagen que dice la palabra 'Code'"} class="logo" />
 
-		<img src={src_character} alt={alt_character} class="character" />
+		<div class="container-character relative h-30 w-60 overflow-hidden">
+			<img src={src_character} alt={alt_character} class="character" />
+		</div>
 	</article>
 </a>
