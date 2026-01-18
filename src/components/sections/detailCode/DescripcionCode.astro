@@ -1,0 +1,19 @@
+---
+import SectionCard from "../../atomos/SectionCard.astro";
+
+
+const { description } = Astro.props as { description: string };
+---
+
+<SectionCard title="Descripcion">
+    <div class="border-slate-70 rounded-xl border border-slate-700 bg-black/30 p-5">
+        {
+            description.split('. ').map((sentence, i) => (
+                <p class="mb-4 text-slate-300">
+                    {sentence}.
+                    <br />
+                </p>
+            ))
+        }
+    </div>
+</SectionCard>
