@@ -1,6 +1,6 @@
 .card {
-    width: 350px;
-    height: 455px;
+    width: 400px;
+    height: 340px;
     position: relative;
     display: flex;
     justify-content: center;
@@ -81,7 +81,7 @@
     width: 100%;
     transition: all 0.5s;
     position: absolute;
-    bottom: 10px;
+    bottom: -70px;
     scale: .9;
 }
 
