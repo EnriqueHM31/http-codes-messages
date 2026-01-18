@@ -4,12 +4,13 @@ interface Props {
 	align?: 'left' | 'center' | 'right';
 	color?: string;
 	size?: string;
+	delay?: string;
 }
 
-const { text, align = 'center', color, size } = Astro.props;
+const { text, align = 'center', color, size, delay = 'animate-delay-0' } = Astro.props as Props;
 ---
 
-<h2 class={`section-title ${color} ${size} ${align === 'left' ? 'text-left' : align === 'right' ? 'text-right' : 'text-center'}`}>
+<h2 class={`section-title ${color} ${size} ${align === 'left' ? 'text-left' : align === 'right' ? 'text-right' : 'text-center'} animate-fade-in-up ${delay} `}>
 	{text}
 </h2>
 
