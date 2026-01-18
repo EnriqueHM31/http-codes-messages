@@ -1,22 +1,16 @@
 ---
-import SectionCard from "../../atomos/SectionCard.astro";
-import InfoCard from "../../codes-http/InfoCard.astro";
+import SectionCard from '../../atomos/SectionCard.astro';
+import InfoCard from '../../codes-http/InfoCard.astro';
+import type { PropsMetaDataCode } from '../../../types/components';
 
-
-interface PropsMetaDataCode {
-    category: string;
-    httpVersion: string;
-    specification: string;
-    relatedCodes: string[];
-}
-const { category, httpVersion, specification, relatedCodes } =  Astro.props as PropsMetaDataCode;
+const { category, httpVersion, specification, relatedCodes } = Astro.props as PropsMetaDataCode;
 ---
 
 <SectionCard title="Caracteristicas">
-    <div class="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4">
-        <InfoCard title="Category" value={category} />
-        <InfoCard title="HTTP Version" value={httpVersion} />
-        <InfoCard title="Specification" value={specification} />
-        {relatedCodes && <InfoCard title="Related Codes" value={relatedCodes.join(', ')} />}
-    </div>
+	<div class="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4">
+		<InfoCard title="Category" value={category} />
+		<InfoCard title="HTTP Version" value={httpVersion} />
+		<InfoCard title="Specification" value={specification} />
+		{relatedCodes && <InfoCard title="Related Codes" value={relatedCodes.join(', ')} />}
+	</div>
 </SectionCard>
