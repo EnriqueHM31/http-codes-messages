@@ -1,13 +1,6 @@
 ---
-interface Props {
-	text: string;
-	align?: 'left' | 'center' | 'right';
-	color?: string;
-	size?: string;
-	delay?: string;
-}
-
-const { text, align = 'center', color, size, delay = 'animate-delay-0' } = Astro.props as Props;
+import type { TitleSectionProps } from '../../types/components';
+const { text, align = 'center', color, size, delay = 'animate-delay-0' } = Astro.props as TitleSectionProps;
 ---
 
 <h2 class={`section-title ${color} ${size} ${align === 'left' ? 'text-left' : align === 'right' ? 'text-right' : 'text-center'} animate-fade-in-up ${delay} `}>

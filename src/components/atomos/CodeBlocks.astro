@@ -1,9 +1,5 @@
 ---
-interface CodeBlockProps {
-	title: string;
-	content: string;
-}
-
+import type { CodeBlockProps } from '../../types/components';
 const { title, content } = Astro.props as CodeBlockProps;
 ---
 
