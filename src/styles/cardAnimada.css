@@ -120,14 +120,15 @@
 }
 
 .title h2 {
-    visibility: visible;
+    opacity: 1;
     background-color: rgba(66, 206, 206, 0.418);
     color: white;
     padding: 0.1rem .6rem;
     font-size: clamp(1rem, 2vw, 1.2rem);
     border-radius: 10px;
+    transition: all 0.5s;
 }
 
 .card:hover .title h2 {
-    visibility: hidden;
+    opacity: 0;
 }
