@@ -1,0 +1,27 @@
+---
+interface Props {
+	text: string;
+	align?: 'left' | 'center' | 'right';
+	color?: string;
+	size?: string;
+}
+
+const { text, align = 'center', color, size } = Astro.props;
+---
+
+<h2 class={`section-title ${color} ${size} ${align === 'left' ? 'text-left' : align === 'right' ? 'text-right' : 'text-center'}`}>
+	{text}
+</h2>
+
+<style>
+	.section-title {
+		font-weight: 800;
+		letter-spacing: 0.5px;
+		text-shadow:
+			0 0 10px rgba(0, 0, 0, 1),
+			0 0 8px rgba(0, 60, 60, 0.8),
+			0 0 16px rgba(0, 120, 120, 0.7),
+			0 0 32px rgba(0, 200, 200, 0.6),
+			0 0 48px rgba(0, 255, 255, 0.9);
+	}
+</style>
