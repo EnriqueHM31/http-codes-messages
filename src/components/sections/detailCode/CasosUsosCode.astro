@@ -1,11 +1,12 @@
 ---
-import SectionCard from "../../atomos/SectionCard.astro";
+import SectionCard from '../../atomos/SectionCard.astro';
+import type { PropsUseCasesCode } from '../../../types/components';
 
-const { useCases } = Astro.props as { useCases: string[] };
+const { useCases } = Astro.props as PropsUseCasesCode;
 ---
 
 <SectionCard title="Casos de uso">
-    <ul class="grid gap-8 sm:grid-cols-3">
-        {useCases.map((useCase: string) => <li class="border-slate-70 rounded-xl border border-slate-700 bg-black/30 p-5">{useCase}</li>)}
-    </ul>
+	<ul class="grid gap-8 sm:grid-cols-3">
+		{useCases.map((useCase: string) => <li class="border-slate-70 rounded-xl border border-slate-700 bg-black/30 p-5">{useCase}</li>)}
+	</ul>
 </SectionCard>
