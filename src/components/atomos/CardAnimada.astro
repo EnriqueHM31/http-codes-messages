@@ -1,22 +1,9 @@
 ---
 import '../../styles/cardAnimada.css';
-
-interface CardAnimadaProps {
-	description: string;
-	image_cover: { imageCover: string; alt: string };
-	image_logo: string;
-	image_character: { imageCharacter: string; alt: string };
-	link: string;
-	code: string;
-}
+import type { CardAnimadaProps } from '../../types/components';
 
 const dataCard = Astro.props as CardAnimadaProps; // type
-const { image_cover, image_logo, image_character, link, code } = dataCard;
-
-const src_cover = image_cover.imageCover;
-const alt_cover = image_cover.alt;
-const src_character = image_character.imageCharacter;
-const alt_character = image_character.alt;
+const { imageCharacter, imageCharacterAlt, imageCover, imageCoverAlt, image_logo, link, code } = dataCard;
 ---
 
 <a href={link} class="">
@@ -25,13 +12,13 @@ const alt_character = image_character.alt;
 			<div class="title z-10 bg-sky-700">
 				<h2 class="absolute top-4 right-8 z-30 text-2xl font-bold">{code}</h2>
 			</div>
-			<img src={src_cover} alt={alt_cover} class="cover-image" transition:name={`${code}-cover`} />
+			<img src={imageCover} alt={imageCoverAlt} class="cover-image" transition:name={`${code}-cover`} />
 		</div>
 
 		<img src={image_logo} alt={"Imagen que dice la palabra 'Code'"} class="logo" />
 
 		<div class="container-character relative h-30 w-60 overflow-hidden">
-			<img src={src_character} alt={alt_character} class="character" />
+			<img src={imageCharacter} alt={imageCharacterAlt} class="character" />
 		</div>
 	</article>
 </a>

@@ -14,24 +14,23 @@ const { data, URL_LOGO, PAGE_SIZE } = Astro.props as SectionCardsProps;
 
 <div id="codes-grid" class="mb-25 flex flex-wrap justify-center gap-x-20 gap-y-16 px-6">
 	{
-		data.slice(0, PAGE_SIZE).map(code => {
+		data.slice(0, PAGE_SIZE).map((code: HttpCode) => {
+			console.log({ code: code.images });
 			const { coverImage, coverImageAlt, characterImage, characterImageAlt } = getImageResource(code.images as HttpImage[]);
+
+			console.log({ coverImage });
 
 			return (
 				<div class="http-card" data-code={code.code} data-status={code.status.toLowerCase()}>
 					<CardAnimada
 						description={code.description}
-						image_cover={{
-							imageCover: coverImage,
-							alt: coverImageAlt
-						}}
-						image_logo={URL_LOGO}
-						image_character={{
-							imageCharacter: characterImage,
-							alt: characterImageAlt
-						}}
+						imageCover={coverImage}
+						imageCoverAlt={coverImageAlt}
+						imageCharacter={characterImage}
+						imageCharacterAlt={characterImageAlt}
 						link={`code/${code.code}`}
 						code={code.code}
+						image_logo={URL_LOGO}
 					/>
 				</div>
 			);
