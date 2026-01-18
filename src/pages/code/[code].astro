@@ -3,10 +3,14 @@ import CodeBlocks from '../../components/atomos/CodeBlocks.astro';
 import SectionCard from '../../components/atomos/SectionCard.astro';
 import InfoCard from '../../components/codes-http/InfoCard.astro';
 import Fondo from '../../components/landing/Fondo.astro';
+import Header from '../../components/sections/detailCode/Header.astro';
 import { HTTP_STATUS_CODES } from '../../data/code';
 import Layout from '../../layouts/Layout.astro';
 import { getHttpCode } from '../../services/httpCodes';
 import type { HttpCode, HttpExample } from '../../types';
+import DescripcionCode from '../../components/sections/detailCode/DescripcionCode.astro';
+import MetaDataCode from '../../components/sections/detailCode/MetaDataCode.astro';
+import CasosUsosCode from '../../components/sections/detailCode/CasosUsosCode.astro';
 
 export function getStaticPaths() {
 	const paths = HTTP_STATUS_CODES.map(status => ({
@@ -19,62 +23,29 @@ export function getStaticPaths() {
 const { code } = Astro.params;
 
 const data = (await getHttpCode(code)) as HttpCode;
+
+const coverImage = data.images?.[0]?.imageCover;
+const coverAlt = data.images?.[0]?.alt;
+const characterImage = data.images?.[1]?.imageCharacter;
+const characterAlt = data.images?.[1]?.alt;
 ---
 
 <Layout title={`Código ${code}`} descripcion={`Pagina para mostrar el código ${code}`}>
 	<Fondo>
 		<!-- HERO -->
-		<section class="relative w-full overflow-hidden">
-			{
-				data.images?.[0]?.imageCover && (
-					<img
-						src={data.images[0].imageCover}
-						alt={data.images[0].alt}
-						class="absolute inset-0 h-full w-full object-cover opacity-40"
-						transition:name={`${code}-cover`}
-					/>
-				)
-			}
-			<div class="absolute inset-0 z-10 h-full w-full bg-linear-to-t from-black to-transparent to-25% object-cover"></div>
-
-			<div class="relative z-20 mx-auto w-full max-w-6xl items-center gap-10 px-6 py-24">
-				<div class="flex min-h-[90dvh] flex-col items-center justify-center"></div>
-			</div>
-		</section>
-
+		<Header cover={coverImage} alt={coverAlt} code={code} />
 		
 		<!-- CONTENT -->
 		<section class="mx-auto max-w-7xl space-y-20 px-6 py-16">
+
 			<!-- DESCRIPTION -->
-			<SectionCard title="Descripcion">
-				<div class="border-slate-70 rounded-xl border border-slate-700 bg-black/30 p-5">
-					{
-						data.description.split('. ').map((sentence, i) => (
-							<p class="mb-4 text-slate-300">
-								{sentence}.
-								<br />
-							</p>
-						))
-					}
-				</div>
-			</SectionCard>
+			<DescripcionCode description={data.description} />
 
 			<!-- META -->
-			<SectionCard title="Caracteristicas">
-				<div class="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4">
-					<InfoCard title="Category" value={data.category} />
-					<InfoCard title="HTTP Version" value={data.httpVersion} />
-					<InfoCard title="Specification" value={data.specification} />
-					{data.relatedCodes && <InfoCard title="Related Codes" value={data.relatedCodes.join(', ')} />}
-				</div>
-			</SectionCard>
+			<MetaDataCode category={data.category} httpVersion={data.httpVersion} specification={data.specification} relatedCodes={data.relatedCodes} />
 
 			<!-- USE CASES -->
-			<SectionCard title="Casos de uso">
-				<ul class="grid gap-8 sm:grid-cols-3">
-					{data.useCases.map((useCase: string) => <li class="border-slate-70 rounded-xl border border-slate-700 bg-black/30 p-5">{useCase}</li>)}
-				</ul>
-			</SectionCard>
+			<CasosUsosCode useCases={data.useCases} />
 
 			<!-- EXAMPLES -->
 			<SectionCard title="Ejemplos">
