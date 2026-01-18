@@ -11,5 +11,6 @@ const data = (await getHttpCodes()) as HttpCode[];
 
 <Layout title="HTTP Codes HM" descripcion="Pagina principal del proyecto HTTP Codes HM, en donde se muestran los códigos HTTP con sus nombres y codes">
 	<Hero />
+
 	<CardsCodesHttp data={data} />
 </Layout>
