@@ -5,3 +5,18 @@ body {
     background-color: rgb(44, 44, 44);
     color: white;
 }
+
+.scroll-estilado::-webkit-scrollbar {
+    width: 10px;
+}
+
+.scroll-estilado::-webkit-scrollbar-track {
+    background: black;
+}
+
+.scroll-estilado::-webkit-scrollbar-thumb {
+    background: linear-gradient(45deg, rgba(3, 102, 76, 0.899), rgb(0, 65, 122));
+    border-radius: 15px;
+    border: 4px solid black;
+    cursor: pointer;
+}
