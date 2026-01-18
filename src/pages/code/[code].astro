@@ -1,12 +1,12 @@
 ---
-import Fondo from '../../components/landing/Fondo.astro';
-import Layout from '../../layouts/Layout.astro';
-import { HTTP_STATUS_CODES } from '../../data/code';
-import { getHttpCode } from '../../services/httpCodes';
+import CodeBlocks from '../../components/atomos/CodeBlocks.astro';
+import SectionCard from '../../components/atomos/SectionCard.astro';
 import InfoCard from '../../components/codes-http/InfoCard.astro';
-import CodeBlocks from '../../components/Atomos/CodeBlocks.astro';
+import Fondo from '../../components/landing/Fondo.astro';
+import { HTTP_STATUS_CODES } from '../../data/code';
+import Layout from '../../layouts/Layout.astro';
+import { getHttpCode } from '../../services/httpCodes';
 import type { HttpCode, HttpExample } from '../../types';
-import SectionCard from '../../components/Atomos/SectionCard.astro';
 
 export function getStaticPaths() {
 	const paths = HTTP_STATUS_CODES.map(status => ({
@@ -41,6 +41,8 @@ const data = (await getHttpCode(code)) as HttpCode;
 				<div class="flex min-h-[90dvh] flex-col items-center justify-center"></div>
 			</div>
 		</section>
+
+		
 		<!-- CONTENT -->
 		<section class="mx-auto max-w-7xl space-y-20 px-6 py-16">
 			<!-- DESCRIPTION -->
