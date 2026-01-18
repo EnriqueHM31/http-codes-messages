@@ -97,22 +97,33 @@
 
 .character {
     width: 100%;
+    height: 100%;
     opacity: 0;
     transition: all 0.5s;
     filter: drop-shadow(2px 2px 2px rgba(0, 0, 0));
     position: absolute;
     z-index: -1;
     scale: 1;
-    margin-right: 45px;
 }
 
 .card:hover .character {
     opacity: 1;
-    scale: 1.1;
-    transform: translate3d(5%, -35%, 670px);
+    scale: 2;
 }
 
-.title {
+.container-character {
+    transition: all 0.5s;
+    position: absolute;
+    z-index: -1;
+    transform: translate3d(0, 100%, 0);
+    margin-right: 20px;
+}
+
+.card:hover .container-character {
+    transform: translate3d(5%, -60%, 670px);
+}
+
+.card:hover .title {
     width: 100%;
     height: 100%;
     background-color: RED !important;
