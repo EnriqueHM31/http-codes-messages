@@ -1,0 +1,29 @@
+---
+import type { HttpCode } from '../../../types';
+import CardAnimada from '../../atomos/CardAnimada.astro';
+
+const { data, URL_LOGO, PAGE_SIZE } = Astro.props as { data: HttpCode[]; URL_LOGO: string; PAGE_SIZE: number };
+---
+
+<div id="codes-grid" class="mb-25 flex flex-wrap justify-center gap-x-20 gap-y-16 px-6">
+	{
+		data.slice(0, PAGE_SIZE).map(code => (
+			<div class="http-card" data-code={code.code} data-status={code.status.toLowerCase()}>
+				<CardAnimada
+					description={code.description}
+					image_cover={{
+						imageCover: code.images?.[0]?.imageCover,
+						alt: code.images?.[0]?.alt
+					}}
+					image_logo={URL_LOGO}
+					image_character={{
+						imageCharacter: code.images?.[1]?.imageCharacter,
+						alt: code.images?.[1]?.alt
+					}}
+					link={`code/${code.code}`}
+					code={code.code}
+				/>
+			</div>
+		))
+	}
+</div>
