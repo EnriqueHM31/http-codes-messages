@@ -47,8 +47,6 @@ export interface PropsMetaDataCode {
 
 export interface SectionCardsProps {
     data: HttpCode[];
-    URL_LOGO: string;
-    PAGE_SIZE: number;
 }
 
 export interface PropsUseCasesCode {
