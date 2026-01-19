@@ -2,8 +2,10 @@
 import '../../styles/cardAnimada.css';
 import type { CardAnimadaProps } from '../../types/components';
 
-const dataCard = Astro.props as CardAnimadaProps; // type
-const { imageCharacter, imageCharacterAlt, imageCover, imageCoverAlt, image_logo, link, code } = dataCard;
+const dataCard = Astro.props as CardAnimadaProps;
+const { imageCharacter, imageCharacterAlt, imageCover, imageCoverAlt, link, code } = dataCard;
+
+const URL_LOGO = 'https://res.cloudinary.com/dovznesem/image/upload/v1768586804/404__2_-removebg-preview_cgkkr5.png';
 ---
 
 <a href={link} class="">
@@ -15,7 +17,7 @@ const { imageCharacter, imageCharacterAlt, imageCover, imageCoverAlt, image_logo
 			<img src={imageCover} alt={imageCoverAlt} class="cover-image" transition:name={`${code}-cover`} />
 		</div>
 
-		<img src={image_logo} alt={"Imagen que dice la palabra 'Code'"} class="logo" />
+		<img src={URL_LOGO} alt={"Imagen que dice la palabra 'Code'"} class="logo" />
 
 		<div class="container-character relative h-30 w-60 overflow-hidden">
 			<img src={imageCharacter} alt={imageCharacterAlt} class="character" />
