@@ -7,9 +7,6 @@ import Sentinel from '../../sections/home/Sentinel.astro';
 import type { CodesHttpProps } from '../../../types/components';
 
 const { data } = Astro.props as CodesHttpProps;
-
-const PAGE_SIZE = 12;
-const URL_LOGO = 'https://res.cloudinary.com/dovznesem/image/upload/v1768586804/404__2_-removebg-preview_cgkkr5.png';
 ---
 
 <section class="max-w-8xl relative mx-auto flex min-h-screen flex-col items-center">
@@ -17,40 +14,29 @@ const URL_LOGO = 'https://res.cloudinary.com/dovznesem/image/upload/v1768586804/
 	<HeaderCodes />
 
 	<!-- GRID -->
-	<SectionCards data={data} URL_LOGO={URL_LOGO} PAGE_SIZE={PAGE_SIZE} />
-
-	<!-- SENTINEL -->
-	<Sentinel />
+	<SectionCards data={data} />
 
 	<!-- NO RESULTS -->
 	<NoResultsCodes />
 </section>
 
 <!-- DATA SERIALIZADA -->
-<script type="application/json" id="codes-data" set:html={JSON.stringify(data)} />
 
 <script>
-	import { initInfiniteScroll } from '../../../utils/infinityScroll';
 	import { initSearch } from '../../../utils/SearchCodes';
 
 	document.addEventListener('astro:page-load', () => {
-		const el = document.getElementById('codes-data');
-
-		if (!el?.textContent) return;
-
-		const data = JSON.parse(el.textContent);
-		const grid = document.getElementById('codes-grid') as HTMLDivElement;
-		const sentinel = document.getElementById('scroll-sentinel') as HTMLDivElement;
+		const form = document.getElementById('search-form') as HTMLFormElement;
 		const input = document.getElementById('search-input') as HTMLInputElement;
 		const noResults = document.getElementById('no-results') as HTMLDivElement;
 
-		const infinite = initInfiniteScroll({ data, grid, sentinel });
-
 		if (input) {
+			form.addEventListener('submit', e => {
+				e.preventDefault();
+			});
 			initSearch({
 				input,
-				noResults,
-				onReset: () => infinite.reset()
+				noResults
 			});
 		}
 	});
