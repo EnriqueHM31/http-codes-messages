@@ -68,6 +68,7 @@ export const HTTP_STATUS_CODES = [
 
     { code: 450 },
     { code: 451 },
+
     { code: 495 },
     { code: 496 },
     { code: 497 },

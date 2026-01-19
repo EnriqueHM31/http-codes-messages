@@ -34,8 +34,11 @@ const URL_LOGO = 'https://res.cloudinary.com/dovznesem/image/upload/v1768586804/
 	import { initSearch } from '../../../utils/SearchCodes';
 
 	document.addEventListener('astro:page-load', () => {
-		const data = JSON.parse(document.getElementById('codes-data')?.textContent ?? '');
+		const el = document.getElementById('codes-data');
 
+		if (!el?.textContent) return;
+
+		const data = JSON.parse(el.textContent);
 		const grid = document.getElementById('codes-grid') as HTMLDivElement;
 		const sentinel = document.getElementById('scroll-sentinel') as HTMLDivElement;
 		const input = document.getElementById('search-input') as HTMLInputElement;
