@@ -86,5 +86,5 @@ export interface HeaderFormatoProps {
 }
 
 export interface PropsDeltaFormat {
-    DeltaFormato: Record<string, string>;
+    deltaFormat: Record<string, string>;
 }

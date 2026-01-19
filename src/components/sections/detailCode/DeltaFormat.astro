@@ -3,14 +3,14 @@ import SectionCard from '../../atomos/SectionCard.astro';
 import InfoCard from '../../codes-http/InfoCard.astro';
 import type { PropsDeltaFormat } from '../../../types/components';
 
-const { DeltaFormato } = Astro.props as PropsDeltaFormat;
+const { deltaFormat } = Astro.props as PropsDeltaFormat;
 ---
 
 {
-	DeltaFormato && (
+	deltaFormat && (
 		<SectionCard title="Formatos de Diferencias y Parches">
 			<div class="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-5">
-				{Object.entries(DeltaFormato).map(([name, format]) => (
+				{Object.entries(deltaFormat).map(([name, format]) => (
 					<InfoCard title={name} value={format} />
 				))}
 			</div>
