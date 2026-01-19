@@ -1,20 +1,19 @@
 function getQuery() {
-    return new URLSearchParams(window.location.search).get('q') ?? '';
+    return new URLSearchParams(window.location.search).get('q')?.toLowerCase() ?? '';
 }
 
 function setQuery(value: string) {
     const url = new URL(window.location.href);
 
+    console.log({ value });
     if (value) {
         url.searchParams.set('q', value);
     } else {
         url.searchParams.delete('q');
     }
 
-    history.replaceState({}, '', url);
+    history.replaceState(null, '', url);
 }
-
-let searchInitialized = false;
 
 export function initSearch({
     input,
@@ -23,37 +22,44 @@ export function initSearch({
     input: HTMLInputElement;
     noResults: HTMLElement;
 }) {
-    if (searchInitialized) return;
-    searchInitialized = true;
+    // 🔹 1. Sync inicial desde la URL
+    const initialValue = getQuery();
+    input.value = initialValue;
+    applyFilter(initialValue);
 
-    // 🔹 1. Inicializa desde la URL
-    input.value = getQuery();
-    applyFilter(input.value);
-
-    // 🔹 2. Escucha cambios del input
+    // 🔹 2. Input → URL → Filter
     input.addEventListener('input', () => {
         const value = input.value.trim().toLowerCase();
+        console.log({ value });
         setQuery(value);
+        applyFilter(value);
+    });
+
+    // 🔹 3. URL → Input (back / forward / navigation)
+    window.addEventListener('popstate', () => {
+        const value = getQuery();
+        input.value = value;
         applyFilter(value);
     });
 
     function applyFilter(value: string) {
         let visible = 0;
 
-        document.querySelectorAll('.http-card').forEach(card => {
-            const el = card as HTMLDivElement;
+        const cards = document.querySelectorAll<HTMLDivElement>('.http-card');
+
+        cards.forEach(el => {
             const code = el.dataset.code ?? '';
-            const status = el.dataset.status ?? '';
+            const status = el.dataset.status?.toLowerCase() ?? '';
 
             const match =
                 !value ||
                 code.includes(value) ||
-                status.toLowerCase().includes(value);
+                status.includes(value);
 
             el.classList.toggle('hidden', !match);
             if (match) visible++;
         });
 
-        noResults.classList.toggle('hidden', visible !== 0);
+        noResults.classList.toggle('hidden', visible > 0);
     }
 }
