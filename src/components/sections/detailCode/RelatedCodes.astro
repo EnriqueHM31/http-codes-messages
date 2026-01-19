@@ -1,0 +1,18 @@
+---
+import SectionCard from '../../atomos/SectionCard.astro';
+import InfoCard from '../../codes-http/InfoCard.astro';
+import type { PropsRelatedCodes } from '../../../types/components';
+const { relatedCodes } = Astro.props as PropsRelatedCodes;
+---
+
+{
+	relatedCodes && (
+		<SectionCard title="Codigos relacionados">
+			<div class="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-5">
+				{relatedCodes.map((code: number) => (
+					<InfoCard title="Code" value={code} />
+				))}
+			</div>
+		</SectionCard>
+	)
+}
