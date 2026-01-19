@@ -1,0 +1,14 @@
+---
+import SectionCard from '../../atomos/SectionCard.astro';
+import type { HeaderFormatoProps } from '../../../types/components';
+
+const { headerFormat } = Astro.props as HeaderFormatoProps;
+---
+
+{
+	headerFormat && (
+		<SectionCard title="Formato de cabecera">
+			<div class="rounded-xl border border-slate-700 bg-slate-800/60 p-6 text-slate-300">{headerFormat}</div>
+		</SectionCard>
+	)
+}
