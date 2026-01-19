@@ -2,11 +2,14 @@
 import { getImageResource } from '../../adapters/ImageResoruce';
 import Fondo from '../../components/landing/Fondo.astro';
 import CasosUsosCode from '../../components/sections/detailCode/CasosUsosCode.astro';
+import DeltaFormat from '../../components/sections/detailCode/DeltaFormat.astro';
 import DescripcionCode from '../../components/sections/detailCode/DescripcionCode.astro';
 import ExamplesCode from '../../components/sections/detailCode/ExamplesCode.astro';
 import Header from '../../components/sections/detailCode/Header.astro';
+import HeaderFormato from '../../components/sections/detailCode/HeaderFormato.astro';
 import MetaDataCode from '../../components/sections/detailCode/MetaDataCode.astro';
 import NotasTecnicas from '../../components/sections/detailCode/NotasTecnicas.astro';
+import RelatedCodes from '../../components/sections/detailCode/RelatedCodes.astro';
 import { HTTP_STATUS_CODES } from '../../data/code';
 import Layout from '../../layouts/Layout.astro';
 import { getHttpCode } from '../../services/httpCodes';
@@ -42,6 +45,15 @@ const { coverImage, coverImageAlt } = getImageResource(data.images as HttpImage[
 
 			<!-- USE CASES -->
 			<CasosUsosCode useCases={data.useCases} />
+
+			<!-- RELATED CODES -->
+			<RelatedCodes relatedCodes={data.relatedCodes} />
+
+			<!-- HEADER FORMAT -->
+			<HeaderFormato headerFormat={data.headerFormat} />
+
+			<!-- DELTA FORMAT -->
+			<DeltaFormat DeltaFormato={data.deltaFormats} />
 
 			<!-- EXAMPLES -->
 			<ExamplesCode examples={data.examples} />

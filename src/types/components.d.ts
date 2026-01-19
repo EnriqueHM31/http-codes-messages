@@ -76,3 +76,15 @@ export interface PropsTechnicalNotesCode {
 export interface CodesHttpProps {
     data: HttpCode[];
 }
+
+export interface PropsRelatedCodes {
+    relatedCodes: number[];
+}
+
+export interface HeaderFormatoProps {
+    headerFormat: string;
+}
+
+export interface PropsDeltaFormat {
+    DeltaFormato: Record<string, string>;
+}
