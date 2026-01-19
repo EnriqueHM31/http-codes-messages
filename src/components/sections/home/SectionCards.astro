@@ -10,10 +10,7 @@ const { data } = Astro.props as SectionCardsProps;
 <div id="codes-grid" class="mb-25 flex flex-wrap justify-center gap-x-20 gap-y-16 px-6">
 	{
 		data.map((code: HttpCode) => {
-			console.log({ code: code.images });
 			const { coverImage, coverImageAlt, characterImage, characterImageAlt } = getImageResource(code.images as HttpImage[]);
-
-			console.log({ coverImage });
 
 			return (
 				<div class="http-card" data-code={code.code} data-status={code.status.toLowerCase()}>
