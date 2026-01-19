@@ -4,12 +4,12 @@ import type { HttpCode, HttpImage } from '../../../types';
 import CardAnimada from '../../atomos/CardAnimada.astro';
 import type { SectionCardsProps } from '../../../types/components';
 
-const { data, URL_LOGO, PAGE_SIZE } = Astro.props as SectionCardsProps;
+const { data } = Astro.props as SectionCardsProps;
 ---
 
 <div id="codes-grid" class="mb-25 flex flex-wrap justify-center gap-x-20 gap-y-16 px-6">
 	{
-		data.slice(0, PAGE_SIZE).map((code: HttpCode) => {
+		data.map((code: HttpCode) => {
 			console.log({ code: code.images });
 			const { coverImage, coverImageAlt, characterImage, characterImageAlt } = getImageResource(code.images as HttpImage[]);
 
@@ -25,7 +25,6 @@ const { data, URL_LOGO, PAGE_SIZE } = Astro.props as SectionCardsProps;
 						imageCharacterAlt={characterImageAlt}
 						link={`code/${code.code}`}
 						code={code.code}
-						image_logo={URL_LOGO}
 					/>
 				</div>
 			);
