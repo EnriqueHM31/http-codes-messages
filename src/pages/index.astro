@@ -1,4 +1,5 @@
 ---
+import ButtonSmooth from '../components/landing/ButtonSmooth.astro';
 import CardsCodesHttp from '../components/sections/home/CardsCodesHttp.astro';
 import Hero from '../components/sections/home/Hero.astro';
 import Layout from '../layouts/Layout.astro';
@@ -11,6 +12,7 @@ const data = (await getHttpCodes()) as HttpCode[];
 
 <Layout title="HTTP Codes HM" descripcion="Pagina principal del proyecto HTTP Codes HM, en donde se muestran los códigos HTTP con sus nombres y codes">
 	<Hero />
-
+	<div id="initial-section" class="mb-10 size-10"></div>
 	<CardsCodesHttp data={data} />
+	<ButtonSmooth />
 </Layout>
