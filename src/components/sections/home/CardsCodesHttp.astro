@@ -1,43 +1,39 @@
 ---
-import type { HttpCode } from '../../../types';
+import type { CodesHttpProps } from '../../../types/components';
 import HeaderCodes from '../../codes-http/HeaderCodes.astro';
 import NoResultsCodes from '../../codes-http/NoResultsCodes.astro';
 import SectionCards from '../../sections/home/SectionCards.astro';
-import Sentinel from '../../sections/home/Sentinel.astro';
-import type { CodesHttpProps } from '../../../types/components';
 
 const { data } = Astro.props as CodesHttpProps;
 ---
 
 <section class="relative mx-auto flex min-h-screen w-full flex-col items-center">
-	<!-- HEADER -->
 	<HeaderCodes />
-
-	<!-- GRID -->
 	<SectionCards data={data} />
-
-	<!-- NO RESULTS -->
 	<NoResultsCodes />
 </section>
 
-<!-- DATA SERIALIZADA -->
+<script id="codes-data" type="application/json">
+	{JSON.stringify(data)}
+</script>
 
 <script>
 	import { initSearch } from '../../../utils/SearchCodes';
+	
+	const input = document.getElementById('search-input') as HTMLInputElement;
+	const noResults = document.getElementById('no-results')as HTMLDivElement;
+	const form = document.getElementById('search-form') as HTMLFormElement;
 
+	document.addEventListener('DOMContentLoaded', () => {
+		if (!input || !noResults) return;
+		initSearch({ input, noResults });
+		form.addEventListener('submit', e => {
+			e.preventDefault();
+		});
+
+	})
 	document.addEventListener('astro:page-load', () => {
-		const form = document.getElementById('search-form') as HTMLFormElement;
-		const input = document.getElementById('search-input') as HTMLInputElement;
-		const noResults = document.getElementById('no-results') as HTMLDivElement;
-
-		if (input) {
-			form.addEventListener('submit', e => {
-				e.preventDefault();
-			});
-			initSearch({
-				input,
-				noResults
-			});
-		}
+		if (!input || !noResults) return;
+		initSearch({ input, noResults });
 	});
 </script>
