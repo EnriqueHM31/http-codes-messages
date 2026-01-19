@@ -1,5 +1,5 @@
 .card {
-    width: 400px;
+    width: 350px;
     height: 340px;
     position: relative;
     display: flex;
@@ -87,8 +87,8 @@
 
 
 .card:hover .logo {
-    transform: translate3d(0, -50px, 100px);
-    scale: 1.2;
+    transform: translate3d(0, -90%, 100px);
+    scale: .7;
 }
 
 .card:hover .cover-image {
@@ -108,7 +108,7 @@
 
 .card:hover .character {
     opacity: 1;
-    scale: 2;
+    scale: 1.6;
 }
 
 .container-character {
