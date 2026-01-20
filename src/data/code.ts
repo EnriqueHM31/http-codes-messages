@@ -84,15 +84,15 @@ export const HTTP_STATUS_CODES = [
     { code: 503 },
     { code: 504 },
     { code: 505 },
-    { code: 506 },
 
+    { code: 506 },
     { code: 507 },
+
     { code: 508 },
     { code: 510 },
     { code: 511 },
     { code: 521 },
     { code: 522 },
-
     { code: 523 },
     { code: 525 },
     { code: 530 },
