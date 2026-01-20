@@ -1,5 +1,5 @@
 export async function getHttpCodes() {
-    const response = await fetch("http://localhost:3000/http-codes");
+    const response = await fetch("http://192.168.1.73:3000/http-codes");
 
     if (!response.ok) {
         throw new Error("Error al obtener los códigos HTTP");
@@ -10,7 +10,7 @@ export async function getHttpCodes() {
 
 
 export async function getHttpCode(code: string) {
-    const response = await fetch(`http://localhost:3000/http-codes/${code}`);
+    const response = await fetch(`http://192.168.1.73:3000/http-codes/${code}`);
 
     if (!response.ok) {
         throw new Error("Error al obtener el código HTTP");
