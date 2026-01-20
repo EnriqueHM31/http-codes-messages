@@ -1,6 +1,7 @@
 ---
 import Fondo from '../components/landing/Fondo.astro';
 import NavBar from '../components/landing/NavBar.astro';
+import Footer from '../components/landing/Footer.astro';
 import '../styles/global.css';
 import type { LayoutProps } from '../types/components';
 
@@ -22,5 +23,6 @@ const { title, descripcion } = Astro.props as LayoutProps;
 		<Fondo>
 			<slot />
 		</Fondo>
+		<Footer />
 	</body>
 </html>
