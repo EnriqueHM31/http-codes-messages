@@ -1,0 +1,127 @@
+<div class="relative">
+	<footer class="z-50 bg-black/80 text-white">
+		<div class="mx-auto max-w-7xl">
+			<div class="mx-auto flex max-w-7xl flex-col items-start justify-between gap-10 px-6 py-3 md:flex-row">
+				<!-- BRAND -->
+				<div class="flex-1 space-y-4">
+					<div class="flex items-center justify-center gap-3 md:justify-start">
+						<div class="flex h-12 w-12 items-center justify-center rounded-full bg-teal-600 font-bold text-white">HM</div>
+						<span class="text-lg font-semibold text-teal-400"> HM Projects </span>
+					</div>
+
+					<p class="text-center text-sm text-gray-400 md:text-left">Diseño y desarrollo de experiencias web modernas, rápidas y escalables.</p>
+
+					<ul class="flex flex-col items-center gap-2 space-y-2 text-sm md:items-start">
+						<li class="flex items-center gap-2">
+							<span class="text-blue-950">📧</span>
+							<span id="email-text">lxxxxxxxx@gmail.com</span>
+							<button
+								id="copy-email"
+								class="ml-2 cursor-pointer text-blue-950 transition-all duration-300 hover:text-blue-600"
+								type="button"
+								aria-label="Copiar correo"
+							>
+								📋
+							</button>
+						</li>
+						<li class="flex items-center gap-2">
+							<span class="text-blue-950">📍</span>
+							México
+						</li>
+					</ul>
+				</div>
+
+				<div class="flex-1"></div>
+
+				<!-- FORM -->
+				<div class="flex flex-1 flex-col items-center md:items-start">
+					<h4 class="mb-4 text-sm font-semibold tracking-wider text-teal-400">Enviar comentarios</h4>
+
+					<form id="email-form" class="w-full space-y-3">
+						<input
+							type="email"
+							name="email"
+							id="email-form"
+							placeholder="Email"
+							autocomplete="on"
+							class="w-full rounded-md bg-white px-4 py-2 text-sm text-blue-950 ring-1 ring-zinc-700 outline-none focus:ring-2 focus:ring-blue-600"
+							required
+						/>
+
+						<input
+							type="text"
+							name="mensaje"
+							id="mensaje-email"
+							placeholder="Comentario"
+							class="w-full rounded-md bg-white px-4 py-2 text-sm text-blue-950 ring-1 ring-zinc-700 outline-none focus:ring-2 focus:ring-blue-600"
+							required
+						/>
+
+						<button
+							type="submit"
+							class="w-full cursor-pointer rounded-md bg-teal-800 py-2 text-sm font-semibold text-white transition-all duration-300 hover:bg-teal-700"
+						>
+							Enviar Comentario
+						</button>
+					</form>
+				</div>
+			</div>
+
+			<!-- BOTTOM -->
+			<div class="mx-5 border-t border-teal-600 py-4 text-center text-xs text-teal-400 md:mx-0">
+				© {new Date().getFullYear()} HM Projects. Todos los derechos reservados.
+			</div>
+		</div>
+	</footer>
+</div>
+
+<!-- CLIENT SCRIPT -->
+<script>
+	import { Notyf } from 'notyf';
+	import 'notyf/notyf.min.css';
+	import { paginaDeDondeEsEnviado } from '../../constants';
+	import { enviarEmail } from '../../services/email.service';
+
+	const form = document.getElementById('email-form') as HTMLFormElement;
+	const copyBtn = document.getElementById('copy-email') as HTMLButtonElement;
+
+	const notyf = new Notyf({
+		duration: 3000,
+		position: { x: 'right', y: 'top' }
+	});
+
+	copyBtn?.addEventListener('click', async () => {
+		try {
+			await navigator.clipboard.writeText('luisenriquehernandezmarin0@gmail.com');
+			notyf.success('Correo copiado');
+		} catch {
+			notyf.error('No se pudo copiar');
+		}
+	});
+
+	form?.addEventListener('submit', async e => {
+		e.preventDefault();
+
+		const formData = new FormData(form);
+		const email = formData.get('email');
+		const mensaje = formData.get('mensaje');
+
+		if (!email || !mensaje) {
+			notyf.error('Todos los campos son obligatorios');
+			return;
+		}
+
+		try {
+			await enviarEmail({
+				email: email as string,
+				comentario: mensaje as string,
+				page: paginaDeDondeEsEnviado
+			});
+
+			notyf.success('Mensaje enviado correctamente');
+			form.reset();
+		} catch (error: any) {
+			notyf.error('No se pudo enviar el mensaje');
+		}
+	});
+</script>
