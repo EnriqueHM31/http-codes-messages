@@ -7,7 +7,7 @@ import { getHttpCodes } from '../services/httpCodes';
 import '../styles/fondoAnimado.css';
 import type { HttpCode } from '../types';
 
-const data = (await getHttpCodes()) as HttpCode[];
+const { data }: { data: HttpCode[] } = await getHttpCodes();
 ---
 
 <Layout title="HTTP Codes HM" descripcion="Pagina principal del proyecto HTTP Codes HM, en donde se muestran los códigos HTTP con sus nombres y codes">
